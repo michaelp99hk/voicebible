@@ -14,25 +14,41 @@
 // Query the database
     //
     function queryDB(tx) {
+		
+		     tx.executeSql('SELECT * FROM bible where writer ="Gen" Group By ch ', [], findchSuccess, errorCB);
 		//alert("queryDB");
-       // tx.executeSql('SELECT * FROM bible where ch = 1 and node =1', [], querySuccess, errorCB);
-	      tx.executeSql('SELECT * FROM bible where writer ="Pro" and ch = 1 ', [], querySuccess, errorCB);
+       //tx.executeSql('SELECT * FROM bible where ch = 1 and node =1', [], querySuccess, errorCB);
+	     tx.executeSql('SELECT * FROM bible where writer ="Gen" and ch = 1 ', [], querySuccess, errorCB);
 
 	  //    tx.executeSql('SELECT * FROM bible', [], querySuccess, errorCB);
 
     }
 
+function findchSuccess(tx,results){
+		//$('#totalch').append( results.rows.length+"章");
+	
+		    var len = results.rows.length;
+			alert(len);
+			for (var i=1; i<=len; i++) {
+	
+				var row = results.rows.item(i-1);
+				$('#totalch').append('<option value="'+i+'">第'+i+'章</option>');
+				//alert('<option value="'+i+'">第'+i+'章</option>');
+			}
+		
+	}
     // Query the success callback
     //
     function querySuccess(tx, results) {
         //alert("Returned rows = " + results.rows.length);
-		$('#totalrecord').append( results.rows.length);
+	
+		$('#totalrecord').append( "共"+results.rows.length+"節");
 		
-		$('#godtext').append('<table>' );
+		$('#godtext').append('<table data-role="table" class="ui-responsive">' );
     var len = results.rows.length;
     for (var i=0; i<len; i++) {
-    	var employee = results.rows.item(i);
-		$('#godtext').append('<tr><td>' + employee.writer+ '</td><td nowrap>'+employee.ch+'－'+employee.node+ '</td><td>'+ employee.text + '</td></tr>');
+    	var row = results.rows.item(i);
+		$('#godtext').append('<tr><td>' + row.writer+ '</td><td nowrap>'+row.ch+'－'+row.node+ '</td><td>'+ row.text + '</td></tr>');
     }
 			$('#godtext').append('</table>' );
 
@@ -57,7 +73,7 @@
     //
     function onDeviceReady() {
 		//alert("device ready2");
-        var db = window.openDatabase("Database", "1.0", "bibledb", 200000);
+        var db = window.openDatabase("Database", "1.0", "bibledb", 5242880);
         db.transaction(queryDB, errorCB, querySuccess);
     }
 	
@@ -66,9 +82,11 @@
     </head>
     <body>
     <div data-role="page">
-      <div data-role="header">
+      <div data-role="header"  data-position="fixed">
         <h1>創世記</h1>
+        <select id="totalch"></select>
         <span id="totalrecord"></span>
+        
       </div>
       <audio controls>
       <source src="mp3/01 Genesis 1.mp3" type="audio/mpeg">

@@ -1,6 +1,5 @@
     function populateDB(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS bible');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS bible (id unique, writer , ch , node, text)');
+
 		
 		tx.executeSql('INSERT INTO bible ( writer , ch , node, text) VALUES ( "Gen",1,1,"起初　神創造天地。")');
 tx.executeSql('INSERT INTO bible ( writer , ch , node, text) VALUES ( "Gen",1,2,"地是空虛混沌．淵面黑暗．　神的靈運行在水面上。")');
