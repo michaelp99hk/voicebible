@@ -1,47 +1,107 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+    <title>Storage Example</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="js/jquery-2.1.3.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+	
+	<script src="insert1.js"></script>    
+	<script src="insert2.js"></script>    
+	<script src="insert3.js"></script>  
+    <script src="insert4.js"></script>  
+    <script src="insert5.js"></script>  
+      <script src="insert5b.js"></script>  
+    <script src="insert6.js"></script>  
+    <script src="insert7.js"></script>    
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "bibbledb", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+	    db.transaction(populateDB2, errorCB, successCB);
+		db.transaction(populateDB3, errorCB, successCB);
+		db.transaction(populateDB4, errorCB, successCB);
+		db.transaction(populateDB5, errorCB, successCB);
+		db.transaction(populateDB5b, errorCB, successCB);
+		db.transaction(populateDB6, errorCB, successCB);
+		db.transaction(populateDB7, errorCB, successCB);
+    }
+    // Populate the database
+    //
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
+
+    </script>
+	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.css">
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready左!</p>
-            </div>
-            <iframe src="http://www.google.com" width="200" height="200"></iframe>
+    <div data-role="page">
+      <div data-role="header">
+        <h1>聖經</h1>
+      </div>
+      <!-- /header -->
+      
+        <div  class="ui-panel-inner">
+          <ul class="ui-first-child">
+            <li ><a href="page.html" class="ui-btn ui-btn-icon-right ">創世記</a></li>
+            <li ><a href="#" class="ui-btn ui-btn-icon-right ">出埃及記</a></li>
+            <li i="3">利未記</li>
+            <li i="4">民數記</li>
+            <li i="5">申命記</li>
+            <li i="6">約書亞記</li>
+            <li i="7">士師記</li>
+            <li i="8">路得記</li>
+            <li i="9">撒母耳記上</li>
+            <li i="10">撒母耳記下</li>
+            <li i="11">列王紀上</li>
+            <li i="12">列王紀下</li>
+            <li i="13">歷代志上</li>
+            <li i="14">歷代志下</li>
+            <li i="15">以斯拉記</li>
+            <li i="16">尼希米記</li>
+            <li i="17">以斯帖記</li>
+            <li i="18">約伯記</li>
+            <li i="19">詩篇</li>
+            <li i="20">箴言</li>
+            <li i="21">傳道書</li>
+            <li i="22">雅歌</li>
+            <li i="23">以賽亞書</li>
+            <li i="24">耶利米書</li>
+            <li i="25">耶利米哀歌</li>
+            <li i="26">以西結書</li>
+            <li i="27">但以理書</li>
+            <li i="28">何西阿書</li>
+            <li i="29">約珥書</li>
+            <li i="30">阿摩司書</li>
+            <li i="31">俄巴底亞書</li>
+            <li i="32">約拿書</li>
+            <li i="33">彌迦書</li>
+            <li i="34">那鴻書</li>
+            <li i="35">哈巴谷書</li>
+            <li i="36">西番雅書</li>
+            <li i="37">哈該書</li>
+            <li i="38">撒迦利亞書</li>
+            <li i="39">瑪拉基書</li>
+          </ul>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+    </div>
+    <!-- /page -->
+</body>
 </html>
