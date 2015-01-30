@@ -73,13 +73,13 @@ function findchSuccess(tx,results){
     // device APIs are available
     //
     function onDeviceReady() {
-		//alert("device ready2");
+		alert("ready");
         var db = window.openDatabase("Database", "1.0", "bibledb", 5242880);
         db.transaction(queryDB, errorCB, querySuccess);
     }
 	
 	    </script>
-	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.min.css">
     </head>
     <body>
     <div data-role="page">

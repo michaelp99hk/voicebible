@@ -8,17 +8,18 @@
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
 	
 	<script src="insert1.js"></script>    
-  
+
 	<script src="insert2.js"></script>    
 	<script src="insert3.js"></script>  
     <script src="insert4.js"></script>  
     <script src="insert5.js"></script>  
-      <script src="insert5b.js"></script>  
+    <script src="insert5b.js"></script>  
     <script src="insert6.js"></script>  
     <script src="insert7.js"></script>    
+
   
     <script type="text/javascript" charset="utf-8">
-
+		console.log("start");
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -32,11 +33,13 @@
 	}
 	
     function onDeviceReady() {
+		console.log("Ready");
         var db = window.openDatabase("Database", "1.0", "bibledb", 5242880);
 	    
 		db.transaction(populateDB0, errorCB, successCB);
 			
         db.transaction(populateDB, errorCB, successCB);
+
 	    db.transaction(populateDB2, errorCB, successCB);
 		db.transaction(populateDB3, errorCB, successCB);
 		db.transaction(populateDB4, errorCB, successCB);
@@ -63,7 +66,7 @@
     }
 
     </script>
-	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.min.css">
     <meta charset="utf-8">
     </head>
     <body>
